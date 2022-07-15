@@ -3,3 +3,32 @@
   margin-top: -20vh;
   background-color: $gray-light-1;
 }
+
+.section-menu {
+  padding: 25% 0;
+  margin-top: -12rem;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($light-green, 0.8),
+      rgba($darkgreen, 0.8)
+    ),
+    url("../img/nat-4.jpg");
+  background-size: cover;
+  background-position: top;
+  transform: skewY(-10deg);
+
+  & > * {
+    transform: skewY(10deg);
+  }
+}
+
+.section-spin-menu {
+  padding: 25rem 0 10rem 0;
+  margin-top: -11rem;
+  background-color: $gray-light-1;
+}
+
+.section-story {
+  padding: 15rem 0;
+  background-color: $gray-light-1;
+}

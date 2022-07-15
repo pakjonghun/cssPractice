@@ -30,6 +30,11 @@
   color: $gray;
 }
 
+.btn--green {
+  background-color: $darkgreen;
+  color: $color-white;
+}
+
 .btn::after {
   content: "";
   display: inline-block;
@@ -67,7 +72,7 @@
   &:hover {
     background-color: $light-green;
     color: $color-white;
-    transform: translateY(-2px);
+    transform: translateY(-px);
     box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
   }
 
