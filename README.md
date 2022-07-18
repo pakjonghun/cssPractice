@@ -175,3 +175,104 @@
 ```
   filter: blur(3px) brightness(80%);
 ```
+
+- video 는 배경으로도 사용 할 수 있다.
+- 구 exproler 에서는 작동 안하므로 소스 마지막에 오류 시 메세지를 남긴다.
+
+```
+//index.html
+  <div class="bg-video">
+    <video class="bg-video-content" autoplay muted loop>
+      <source src="img/video.mp4" type="video/mp4" />
+      <source src="img/video.webm" type="video/webm" />
+      지원하지 않는 브라우저 입니다.
+    </video>
+  </div>
+
+//video.scss
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  user-select: none;
+  opacity: 0.45;
+  overflow: hidden;
+  &-content {
+    height: 100%;
+    width: 100%;
+
+    //이전에는 넓은 쪽으로 100% 줬는데 그냥 이렇게 해도 좋다.(비율 유지하며 꽉채움(커버 효과)
+    object-fit: cover;
+  }
+}
+
+
+
+```
+
+- 배경화면을 사선으로 하는 방법
+- 위에 있는 것 처럼 clip-path:로 할 수도 있고
+- 아래처럼 간단한 가운데 사선 정도는 그라디에이션으로도 가능하다
+
+```
+  .book {
+    height: 50rem;
+    background-image: linear-gradient(
+        // 기울기 각도
+        105deg,
+
+        //색상과 색상이 차지하는 %
+        rgba($color-white, 0.8) 0%,
+
+        //가운데 사선을 위해서 작성하는 트릭 50% 는 흰색으로 가자
+        rgba($color-white, 0.8) 50%,
+
+        //나머지 50%는 orangered 로 꽉 채워라.
+        orangered 50%
+      ),
+      url("/img/nat-10.jpg");
+    background-size: 100%;
+
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+  }
+```
+
+- 레이아웃 팁 하나 height 가 고정되면 size 를 % 단위로 조정해서 이미지를 표현 가느앟다
+
+```
+  //메트릭스 영화에 보면 tv에 화면이 몇백개로 분할되는 장면 나오는데 그게 가능해 진다.
+  //1. height 정하기   2. background 정하기  3. 그 baackground 를 몇%로 몇분할 할건지 정하기
+
+  - 배경화면을 사선으로 하는 방법
+- 위에 있는 것 처럼 clip-path:로 할 수도 있고
+- 아래처럼 간단한 가운데 사선 정도는 그라디에이션으로도 가능하다
+  .book {
+    height: 50rem;
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.8) 0%,
+        rgba($color-white, 0.8) 50%,
+        orangered 50%
+      ),
+      url("/img/nat-10.jpg");
+    background-size: 100%;
+
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+  }
+```
+
+- 형제 선택자 는 ~(위치 상관없이 같은 레벨), +(바로 요소 바로 다음에 있어야만 작동함) 이 있다.
+- javascript 없이 일부 유효성 검사 가 제법 그럴듯 하게 가능해 진다
+
+```
+  &-input:placeholder-shown + .form-label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+  }
+```

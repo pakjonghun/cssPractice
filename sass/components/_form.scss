@@ -1,0 +1,100 @@
+.form {
+  .form {
+    &-group:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    &-input {
+      display: block;
+      width: 90%;
+      padding: 1.5rem 2rem;
+      font-size: 1.5rem;
+      font-family: inherit;
+      color: inherit;
+      background-color: rgba($color-white, 0.9);
+      border-radius: 3px;
+      border: 3px solid transparent;
+      transition: all 0.3s;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        border-bottom: 3px solid $darkgreen;
+      }
+
+      &:focus:invalid {
+        border-bottom: 3px solid $color-orange-dark;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $gray-2;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+    }
+
+    &-label {
+      display: block;
+      margin-top: 0.5rem;
+      margin-left: 1.5rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      transform: translateY(0);
+      transition: all 0.2s linear;
+    }
+
+    &-input:placeholder-shown + .form-label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+    }
+
+    &-radio-input {
+      display: none;
+    }
+
+    &-radio-group {
+      display: inline-block;
+      width: 40%;
+      background-color: yellow;
+    }
+
+    &-radio-label {
+      position: relative;
+      font-size: $default-font-size;
+      cursor: pointer;
+    }
+
+    &-radio-button {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      border: 5px solid $darkgreen;
+      border-radius: 100%;
+      transform: translateY(-50%);
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1.3rem;
+        height: 1.3rem;
+        background-color: $darkgreen;
+        border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s linear;
+      }
+    }
+
+    &-radio-input:checked ~ .form-radio-label .form-radio-button::after {
+      opacity: 1;
+    }
+  }
+}
